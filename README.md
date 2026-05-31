@@ -41,7 +41,40 @@
 ### Step 14: 
   Stop
 # Program:
+```
+#include <stdio.h>
+
+int main()
+{
+    int d, m, y, maxDays;
+
+    scanf("%d/%d/%d", &d, &m, &y);
+
+    if(m == 2)
+    {
+        if((y % 400 == 0) || (y % 4 == 0 && y % 100 != 0))
+            maxDays = 29;
+        else
+            maxDays = 28;
+    }
+    else if(m == 4 || m == 6 || m == 9 || m == 11)
+        maxDays = 30;
+    else if(m >= 1 && m <= 12)
+        maxDays = 31;
+    else
+        maxDays = 0;
+
+    if(d >= 1 && d <= maxDays)
+        printf("Valid Date");
+    else
+        printf("Invalid Date");
+
+    return 0;
+}
+```
 # Output:
+<img width="237" height="221" alt="image" src="https://github.com/user-attachments/assets/f97ac926-9448-4878-8fb4-a633b7fa833b" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -89,9 +122,38 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 13: 
   Stop
 # Program:
+```
+#include <stdio.h>
+
+int max(int a, int b)
+{
+    return (a > b) ? a : b;
+}
+
+int min(int a, int b)
+{
+    return (a < b) ? a : b;
+}
+
+int main()
+{
+    int n1, n2;
+
+    printf("Enter two numbers: ");
+    scanf("%d%d", &n1, &n2);
+
+    printf("Maximum = %d\n", max(n1, n2));
+    printf("Minimum = %d\n", min(n1, n2));
+
+    return 0;
+}
+```
 # Output:
+<img width="290" height="112" alt="image" src="https://github.com/user-attachments/assets/69a8474a-4b21-4046-a1ba-f822c5097dc6" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
+
 
 
 # 19AI304-Fundamentals-of-C-Programming-2025-Odd-M4
@@ -137,9 +199,41 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11: 
  Stop
 # Program:
+```
+#include <stdio.h>
+
+float ctof(float c)
+{
+    return (c * 9 / 5) + 32;
+}
+
+float ftoc(float f)
+{
+    return (f - 32) * 5 / 9;
+}
+
+int main()
+{
+    float c, f;
+
+    printf("Enter temperature in Celsius: ");
+    scanf("%f", &c);
+
+    printf("Enter temperature in Fahrenheit: ");
+    scanf("%f", &f);
+
+    printf("\n%.2f Celsius = %.2f Fahrenheit\n", c, ctof(c));
+    printf("%.2f Fahrenheit = %.2f Celsius\n", f, ftoc(f));
+
+    return 0;
+}
+```
 # Output:
+<img width="412" height="152" alt="image" src="https://github.com/user-attachments/assets/ac6ede4f-ab4f-4f3a-b0db-d181c50d51fb" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
+
 
  
 # 19AI304-Fundamentals-of-C-Programming-2025-Odd-M4
@@ -185,9 +279,41 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 7: 
   Stop
 # Program:
+```
+#include <stdio.h>
+
+int main()
+{
+    int a[4][4], i, t=0, b=3, l=0, r=3;
+
+    for(i=0;i<4;i++)
+        for(int j=0;j<4;j++)
+            scanf("%d",&a[i][j]);
+
+    while(t<=b && l<=r)
+    {
+        for(i=l;i<=r;i++) printf("%d ",a[t][i]);
+        t++;
+
+        for(i=t;i<=b;i++) printf("%d ",a[i][r]);
+        r--;
+
+        for(i=r;i>=l;i--) printf("%d ",a[b][i]);
+        b--;
+
+        for(i=b;i>=t;i--) printf("%d ",a[i][l]);
+        l++;
+    }
+
+    return 0;
+}
+```
 # Output:
+<img width="517" height="52" alt="image" src="https://github.com/user-attachments/assets/869899a5-64fe-4be3-9049-eeb5022df35b" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
+
 
 
 # 19AI304-Fundamentals-of-C-Programming-2025-Odd-M4
@@ -220,7 +346,40 @@ To build a C program to convert a string as described above, using a user-define
 ### Step 6: 
  Stop
 # Program:
+```
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+void convert(char s[])
+{
+    int i, n = strlen(s);
+
+    s[0] = toupper(s[0]);
+    s[n-1] = toupper(s[n-1]);
+
+    for(i = 1; s[i]; i++)
+        if(s[i]==' ')
+            s[i-1]=toupper(s[i-1]), s[i+1]=toupper(s[i+1]);
+
+    printf("%s", s);
+}
+
+int main()
+{
+    char s[100];
+
+    fgets(s, 100, stdin);
+    s[strcspn(s, "\n")] = 0;
+
+    convert(s);
+
+    return 0;
+}
+```
 # Output:
+<img width="323" height="243" alt="image" src="https://github.com/user-attachments/assets/f0b0f576-b558-4d4d-b679-168c972f0606" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
